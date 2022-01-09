@@ -16,16 +16,16 @@ def index(request):
     return HttpResponse("Hello, Hd")
 
 
-# def get_all_codes(request):
-#     """
-#     Return all code with all details.
-#     """
+def get_all_codes(request):
+    """
+    Return all code with all details.
+    """
 
-#     codes = Coupon.objects.all()
+    codes = Coupon.objects.all()
 
-#     return render(
-#         request=request, template_name="promocode/codes.html", context={"codes": codes}
-#     )
+    return render(
+        request=request, template_name="promocode/codes.html", context={"codes": codes}
+    )
 
 
 def get_all_redemptions(request):
@@ -42,24 +42,24 @@ def get_all_redemptions(request):
     )
 
 
-# def add_new_code(request):
-#     """
-#     Add new Code form.
-#     """
-#     context = {}
-#     context["form"] = CouponForm()
+def add_new_code(request):
+    """
+    Add new Code form.
+    """
+    context = {}
+    context["form"] = CouponForm()
 
-#     if request.method == "POST":
+    if request.method == "POST":
 
-#         form = CouponForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             return redirect(reverse("get_all_codes"))
-#         else:
-#             context["form"] = form
-#             return render(request, "promocode/new_code.html", context)
+        form = CouponForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse("get_all_codes"))
+        else:
+            context["form"] = form
+            return render(request, "promocode/new_code.html", context)
 
-#     return render(request, "promocode/new_code.html", context)
+    return render(request, "promocode/new_code.html", context)
 
 
 def get_user_data(request):

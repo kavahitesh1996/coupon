@@ -53,6 +53,8 @@ class Coupon(TimeStampedModel):
         help_text="How many times this coupon will be used.", default=1
     )
 
+    per_user_limit = models.PositiveIntegerField()
+
     is_active = models.BooleanField(default=True)
 
     # is_used = models.BooleanField(default=False)
@@ -124,7 +126,7 @@ class CouponRedemption(TimeStampedModel):
             and timezone.now() < coupon.expiration_date
         ):
             if coupon.number_of_uses > 0:
-                if not cls.objects.filter(user=user, coupon=coupon).exists():
+                if len(cls.objects.filter(user=user, coupon=coupon)) < coupon.per_user_limit:
                     if coupon.discount_type == "percentage":
                         discount_amout = (order_amount * coupon.discount) / 100
                         amount = order_amount - discount_amout
@@ -148,7 +150,7 @@ class CouponRedemption(TimeStampedModel):
                         username=user.username, coupon_code=coupon.code
                     )
                 else:
-                    return "User has already used this."
+                    return "User reach max limit used"
             else:
                 return "Coupon code max limit used."
         else:

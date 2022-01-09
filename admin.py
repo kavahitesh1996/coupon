@@ -30,15 +30,15 @@ admin.site.register(User, UserAdmin)
 class CouponForm(forms.ModelForm):
     """Form for adding entitlement support details, exists mostly for testing purposes"""
 
-    def clean(self):
-        """
-        Validation for Coupon start date
-        """
-        # form_data = self.cleaned_data
-        # if self.instance.id and form_data.get('start_date'):
-        #     if timezone.now() > form_data.get('start_date'):
-        #         raise ValidationError("You can't change the code after the code start date is started.")
-        # return form_data
+    # def clean(self):
+    #     """
+    #     Validation for Coupon start date
+    #     """
+    #     form_data = self.cleaned_data
+    #     if self.instance.id and form_data.get('start_date'):
+    #         if timezone.now() > form_data.get('start_date'):
+    #             raise ValidationError("You can't change the code after the code start date is started.")
+    #     return form_data
 
     class Meta:
         fields = "__all__"
