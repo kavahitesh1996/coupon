@@ -105,6 +105,9 @@ class CouponRedemption(TimeStampedModel):
         help_text="Order total amount after code redemption applied."
     )
 
+    def __str__(self):
+        return "{} - {}".format(self.user.username, self.coupon.code)
+
     @classmethod
     def add_coupon_redemption(cls, user, coupon, order_amount):
         """
@@ -126,7 +129,7 @@ class CouponRedemption(TimeStampedModel):
                         discount_amout = (order_amount * coupon.discount) / 100
                         amount = order_amount - discount_amout
                         # Check Birthdate
-                        if timezone.now().date() == user.profile.date_of_birth:
+                        if timezone.now().date().strftime("%m/%d") == user.profile.date_of_birth.strftime("%m/%d"):
                             amount = amount - (amount * 10) / 100
 
                         if coupon.max_discount_amout < amount:
