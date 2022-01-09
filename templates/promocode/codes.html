@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<h2 style="text-align: center;">Coupon Codes</h2>
+<h2 style="text-align: right;">
+<a href="/add_new_code">
+Add Coupon
+</a>
+</h2>
+
+<table>
+  <tr>
+    <th>Code</th>
+    
+    <th>Gender</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+    <th>Discount</th>
+    <th>Max Discount Amout</th>
+    <th>Counter</th>
+    <th>is_active</th>
+  </tr>
+  	{% for code in codes %}
+  	
+  	<tr>
+  		
+    	<td>{{code.code}}</td>
+    	<td>{{code.display_gender}}</td>
+    	<td>{{code.start_date}}</td>
+    	<td>{{code.expiration_date}}</td>
+    	<td>{{code.discount}}</td>
+    	<td>{{code.max_discount_amout}}</td>
+    	<td>{{code.counter}}</td>
+    	<td>{{code.is_active}}</td>
+  	</tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
+

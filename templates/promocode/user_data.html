@@ -1,0 +1,147 @@
+<!DOCTYPE html>    
+<html>    
+<head>    
+<meta name="viewport" content="width=device-width, initial-scale=1">    
+<style>    
+* {    
+  box-sizing: border-box;    
+}    
+    
+input[type=text], select, textarea {    
+  width: 100%;    
+  padding: 12px;    
+  border: 1px solid rgb(70, 68, 68);    
+  border-radius: 4px;    
+  resize: vertical;    
+}    
+input[type=email], select, textarea {    
+  width: 100%;    
+  padding: 12px;    
+  border: 1px solid rgb(70, 68, 68);    
+  border-radius: 4px;    
+  resize: vertical;    
+}    
+    
+label {    
+  padding: 12px 12px 12px 0;    
+  display: inline-block;    
+}    
+    
+input[type=submit] {    
+  background-color: rgb(37, 116, 161);    
+  color: white;    
+  padding: 12px 20px;    
+  border: none;    
+  border-radius: 4px;    
+  cursor: pointer;    
+  float: right;    
+}    
+    
+input[type=submit]:hover {    
+  background-color: #45a049;    
+}    
+    
+.container {    
+  border-radius: 5px;    
+  background-color: #f2f2f2;    
+  padding: 20px;    
+}    
+    
+.col-25 {    
+  float: left;    
+  width: 25%;    
+  margin-top: 6px;    
+}    
+    
+.col-75 {    
+  float: left;    
+  width: 75%;    
+  margin-top: 6px;    
+}    
+    
+/* Clear floats after the columns */    
+.row:after {    
+  content: "";    
+  display: table;    
+  clear: both;    
+}    
+    
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */    
+</style>    
+</head>    
+<body>    
+<h2 style="text-align:center;">Order Data</h2>    
+<div class="container">    
+  
+  <form action = "" method = "post" style="text-align: -webkit-center;">
+    {% csrf_token %}
+    <div class="row">    
+      <div class="col-25">    
+        <label for="user_id">User ID</label>    
+      </div>    
+      <div class="col-75">    
+        <input type="text" id="user_id" name="user_id" placeholder="Enter user id..">    
+      </div>    
+    </div>    
+    <div class="row">    
+      <div class="col-25">    
+        <label for="birthdate">Birthdate</label>    
+      </div>    
+      <div class="col-75">    
+        <input type="text" id="birthdate" name="birthdate" placeholder="Your birthdate..">    
+      </div>    
+    </div>    
+  
+    <div class="row">    
+      <div class="col-25">    
+        <label for="gender">Gender</label>    
+      </div>    
+      <div class="col-75">    
+        <select id="gender" name="gender">      
+          <option value="m">Male</option>    
+          <option value="f">Female</option>    
+        </select>    
+      </div>    
+    </div>    
+
+    <div class="row">    
+        <div class="col-25">    
+          <label for="order_amount">Order Amount</label>    
+        </div>    
+        <div class="col-75">    
+          <input type="text" id="order_amount" name="order_amount" placeholder="Enter Order Amount..">    
+        </div>    
+      </div>  
+
+      <div class="row">    
+        <div class="col-25">    
+          <label for="order_code">Promo Code</label>    
+        </div>    
+        <div class="col-75">    
+          <input type="text" id="order_code" name="order_code" placeholder="Enter Code..">    
+        </div>    
+      </div>  
+    
+    <div class="row">  
+    	<p style="text-align: right;">
+    	{% if msg %}
+    		{{msg}}  
+    	{% endif %}
+    	</p>
+      <input type="submit" value="Submit">    
+    </div>    
+  </form>    
+</div>    
+
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#birthdate" ).datepicker();
+  } );
+  </script>
+
+</body>    
+</html>    
+

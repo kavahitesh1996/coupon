@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2 style="text-align: center;">Add New Coupon Code</h2>
+
+<form action = "" method = "post" style="text-align: -webkit-center;">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+    <input type="submit" value="Submit">
+</form>
+
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#id_start_date" ).datepicker();
+    $( "#id_expiration_date" ).datepicker();
+  } );
+  </script>
+
+</body>
+</html>
+

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<h2 style="text-align: center;">Coupon Redemptions</h2>
+
+<table>
+  <tr>
+    <th>Usename</th>
+    <th>Date of Birth</th>
+    <th>Gender</th>
+    <th>Code</th>
+    <th>Order Total Price</th>
+    <th>Discount Price</th>
+    <th>Order Actual Value (After Discount Applied)</th>
+  </tr>
+  	{% for code in codes %}
+	  	<tr>
+	    	<td>{{code.user.username}}</td>
+	    	<td>{{code.user.profile.date_of_birth}}</td>
+	    	<td>
+	    		{% if code.user.profile.gender == 'm' %}
+	    			Male
+	    		{% else %}
+	    			Female
+	    		{% endif %}
+	    	</td>
+	    	<td>{{code.coupon.code}}</td>
+	    	<td>{{code.order_amount}}</td>
+	    	<td>{{code.discount_amout}}</td>
+	    	<td>{{code.actual_price}}</td>
+	  	</tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
+
